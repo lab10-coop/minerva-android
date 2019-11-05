@@ -1,6 +1,3 @@
-[![pipeline status](https://code.lab10.io/graz/10-Minerva/minerva/badges/master/pipeline.svg)](https://code.lab10.io/graz/10-Minerva/minerva/commits/master)
-
-
 # Minerva
 
 
@@ -21,7 +18,7 @@ You need to provide there FCM TOKEN of the device which you want to test and SER
 
 ### Notification payload
 
-#### Payment 
+#### Payment
 
 	 "title": string
      "body": string
