@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="16dp"
+        android:backgroundTint="#ffffffff"
+        app:cardBackgroundColor="#ffffff"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <View
+                android:id="@+id/identity_holder"
+                android:layout_width="8dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/card_holder_red"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+
+                <ImageButton
+                    android:id="@+id/btn_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="@null"
+                    android:src="@drawable/ic_more_vert_black"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/identity_avatar"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:text="D"
+                        android:gravity="center"
+                        android:theme="@style/Minerva.Identity.Avatar.Text"
+                        android:background="@drawable/identity_card_avatar"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/identity_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Default identity"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="15dp"
+                        android:textSize="16sp"
+                        style="@style/Minerva.Card.Value"
+                        app:layout_constraintLeft_toRightOf="@+id/identity_avatar"
+                        app:layout_constraintTop_toTopOf="@+id/identity_avatar"
+                        app:layout_constraintBottom_toBottomOf="@+id/identity_avatar"/>
+
+
+                <TextView
+                    android:id="@+id/attr_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Minerva.Card.SectionTitle"
+                    android:layout_marginTop="10dp"
+                    android:textSize="12sp"
+                    tools:text="+ DID"
+                    app:layout_constraintTop_toBottomOf="@+id/identity_name"
+                    app:layout_constraintLeft_toLeftOf="parent"/>
+
+
+                <LinearLayout
+                    android:id="@+id/identity_details"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@+id/attr_value">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        style="@style/Minerva.Card.SectionTitle"
+                        android:text="DID"/>
+
+
+                    <TextView
+                        android:id="@+id/identity_did"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/Minerva.Card.Recipient"
+                        tools:text="did:uport:123456"/>
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

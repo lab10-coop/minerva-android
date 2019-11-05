@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/add_button"
+        android:orderInCategory="100"
+        android:title="@string/ideintity_action_add_identity"
+        android:icon="@drawable/ic_add_black"
+        app:showAsAction="always" />
+</menu>

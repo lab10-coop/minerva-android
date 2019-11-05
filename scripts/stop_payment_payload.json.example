@@ -1,0 +1,10 @@
+{
+	"to": "",
+	"data": {
+	 "title": "Continuous Payment Finished",
+      	 "body": "Futuregrid received 13.17€ in 2h 15min for charging",
+      	 "action": "stopPayment",
+	 "receiverWalletAddress": "0x01107970B192aF0e1d023f231cb97a78Ec73F232"
+	}
+
+}

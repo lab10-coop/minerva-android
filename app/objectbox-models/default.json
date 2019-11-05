@@ -1,0 +1,64 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "3:7867588568751959644",
+      "lastPropertyId": "2:6620278419409372084",
+      "name": "Token",
+      "properties": [
+        {
+          "id": "1:2893262219982957379",
+          "name": "id"
+        },
+        {
+          "id": "2:6620278419409372084",
+          "indexId": "1:6619818132395658151",
+          "name": "networkId"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "5:4913888630197974911",
+      "lastPropertyId": "1:4219355955623965487",
+      "name": "Network",
+      "properties": [
+        {
+          "id": "1:4219355955623965487",
+          "name": "id"
+        }
+      ],
+      "relations": [
+        {
+          "id": "2:5801395404355672551",
+          "name": "tokens"
+        }
+      ]
+    }
+  ],
+  "lastEntityId": "5:4913888630197974911",
+  "lastIndexId": "1:6619818132395658151",
+  "lastRelationId": "2:5801395404355672551",
+  "lastSequenceId": "0:0",
+  "modelVersion": 4,
+  "modelVersionParserMinimum": 4,
+  "retiredEntityUids": [
+    4481630592134734111,
+    8997448968258990511,
+    7218424132135566598
+  ],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [
+    8549494124322868737,
+    2135597988365744934,
+    5086233819408167320,
+    590464039354992596,
+    8723887778234144187
+  ],
+  "retiredRelationUids": [
+    2785195718194683838
+  ],
+  "version": 1
+}

@@ -1,0 +1,130 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'realm-android'
+
+android {
+    signingConfigs {
+    }
+    compileSdkVersion 28
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+    defaultConfig {
+        applicationId "coop.lab10.minerva"
+        minSdkVersion 23
+        targetSdkVersion 28
+        versionCode 20
+        versionName "3.0.3"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+        signingConfigs {
+            release {
+                storeFile file("../MinervaKeyStore.jks")
+                keyPassword System.getenv('ANDROID_KEY_PASSWORD')
+                storePassword System.getenv('ANDROID_STORE_PASSWORD')
+                keyAlias "MinervaWallet"
+            }
+        }
+        setProperty("archivesBaseName", applicationId + "-v" + versionCode + "(" + versionName + ")")
+    }
+    // because: https://stackoverflow.com/questions/49891730/invoke-customs-are-only-supported-starting-with-android-0-min-api-26
+    // TODO: or switch to VERSION_1_10 instead?
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            resValue "string", "app_name", "Minerva"
+        }
+
+        debug {
+            minifyEnabled false
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = "-debug"
+            buildConfigField "String", "CONTACT_EMAIL", "\"robert@lab10.coop\""
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            resValue "string", "app_name", "Minerva Staging"
+        }
+    }
+}
+
+ext {
+    supportLibraryVersion = '1.0.0-beta01'
+    firebaseVersion = '11.6.2'
+    uport_sdk_version = "v0.4.2"
+    work_version = "2.0.0"
+    objectboxVersion = '2.3.4'
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.preference:preference:1.1.0-beta01'
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0-alpha4', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    configurations.all {
+        exclude group: 'com.android.support', module: 'support-v13'
+    }
+    testImplementation 'junit:junit:4.12'
+    // Robolectric environment
+    testImplementation 'androidx.test:core:1.0.0'
+    testImplementation 'org.robolectric:robolectric:4.2'
+    // Mockito framework
+    testImplementation 'org.mockito:mockito-core:1.10.19'
+
+    implementation "androidx.legacy:legacy-support-v4:${supportLibraryVersion}"
+    implementation "androidx.appcompat:appcompat:${supportLibraryVersion}"
+    implementation "androidx.recyclerview:recyclerview:${supportLibraryVersion}"
+    implementation "androidx.cardview:cardview:${supportLibraryVersion}"
+    implementation "com.google.android.material:material:${supportLibraryVersion}"
+    implementation "androidx.annotation:annotation:${supportLibraryVersion}"
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    // Constraint Layout
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    // Material dialog
+    implementation 'com.afollestad.material-dialogs:core:0.9.4.5'
+    implementation 'org.web3j:core:4.2.0-android'
+    // Firebase
+    implementation 'com.google.firebase:firebase-core:16.0.1'
+    implementation 'com.google.firebase:firebase-messaging:17.3.4'
+    // for convenient handling of async stuff - pub/sub
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    // uPort SDK
+    implementation "com.github.uport-project.uport-android-sdk:sdk:$uport_sdk_version"
+
+    // See: https://developer.android.com/kotlin/ktx#ktx
+    implementation 'androidx.core:core-ktx:1.0.0'
+
+    // WorkManager for background jobs
+    implementation "androidx.work:work-runtime-ktx:$work_version"
+
+    // kotlin extension for ObjectBox
+    implementation "io.objectbox:objectbox-kotlin:$objectboxVersion"
+
+
+}
+
+repositories {
+    mavenCentral()
+}
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'io.objectbox'
